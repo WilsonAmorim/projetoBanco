@@ -3,6 +3,8 @@ package controle;
 import interfaces.IConta;
 import modelo.Cliente;
 
+import javax.swing.*;
+
 public abstract class Conta implements IConta {
     private static int AGENCIA_PADRAO = 1;
     private static int SEQUENCIAL = 1;
@@ -22,6 +24,10 @@ public abstract class Conta implements IConta {
     @Override
     public void sacar(double valor) {
         saldo -= valor;
+        if(saldo < 0){
+            JOptionPane.showMessageDialog(null, "Saldo Insuficiente");
+            saldo += valor;
+        }
         //saldo = saldo - valor;
 
     }
